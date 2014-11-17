@@ -3,12 +3,15 @@
 Trickle is a global filters widget.
 
   - Instantiate a Trickle object (with configuration)
-  - Listen for filters and apply filters in a callback
+  - Listen for triggers and apply filters in a callback
 
-Trickle is a lightweight JavaScript module for easily creating forms and configuring options to create feature-rich filters.:
+Trickle is a lightweight JavaScript module for easily creating forms and 
+configuring options to create feature-rich filters.:
 
-> The overriding design goal for Trickle is to make global filters as easy as possible to add and maintain.
-> Global filters should be configurable and they should listen for and emit trigger events upon acceptance.
+> The overriding design goal for Trickle is to make global filters as easy as 
+> possible to add and maintain.
+> Global filters should be configurable and they should listen for and emit 
+> trigger events upon acceptance.
 
 #### Supported widgets:
 
