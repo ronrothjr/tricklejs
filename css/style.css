@@ -1,0 +1,93 @@
+  .filter {
+    float: left;
+    margin-right: 10px; }
+  .filter > label {
+    margin-bottom: -4px;}
+  .filter .form-group {
+    margin-bottom: 0px;}
+  .filter .btn-primary {
+    color: #222222;
+    background-color: #dddddd;
+    border-color: #285e8e; }
+  .filter .btn-primary:hover {
+    color: #222222;
+    background-color: #aaaaaa;
+    border-color: #285e8e; }
+  .filter > .btn-primary:focus {
+      color: #ffffff;
+      background-color: #3276b1;
+      border-color: #222222; }
+  .filter .btn-primary {
+    color: #222222;
+    background-color: #dddddd;
+    border-color: #285e8e; }
+  .filter .btn-primary:hover {
+    color: #222222;
+    background-color: #aaaaaa;
+    border-color: #285e8e; }
+  button {
+    margin-top: 10px;
+    margin-right: 25px; 
+    float: left;
+  }
+  .filter_button {
+    margin-top: 20px !important; }
+  .filter_labels {
+    margin-top: 20px; }
+  .filter_content {
+    z-index: 5000;
+    position: absolute;
+    left: 5px;
+    top: 100px;
+    width: 325px;
+    background: #FFFFFF;
+    background: white;
+    border: 2px solid #5cb85c;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    margin-right: 5px;
+    padding: 10px;
+    border-radius: 0px 10px 0px 10px; }
+  .filter .field-validation-error {
+    color: red;
+  }
+  .filter input[type=date] {
+    height: 22px;
+    width: 150px; }
+  .daterange_filter {
+    width: 320px; }
+  .daterange-label {
+    margin-top: -4px !important;
+    margin-bottom: -4px !important;}
+  .filter-label {
+    margin-top: 10px;
+    margin-right: 20px; }
+  .filter-label label {
+      color: #5cb85c; }
+  .chosen-choices {
+    border-radius: 4px; }
+  .filter_parameters > div {
+    margin-right: 10px !important;}
+  .filter_parameter > label {
+    margin-top: -4px !important;
+    margin-bottom: -4px !important;}
+  .filter_list_button {
+    margin-top: 5px; }
+  .filter_list {
+    position: relative;
+    display: inline-block; 
+  }
+  .filter_list > div {
+    vertical-align: top;
+    margin-top: 10px;}
+  .filter_list_items > div {
+    float: left;
+    margin-right: 5px !important;
+    margin-top: 0px !important;
+    -webkit-border-radius: 12px 12px 12px 12px;
+    border-radius: 12px 12px 12px 12px;
+    background-color: #0067ac;
+    color: white;
+    padding: 1px 10px 1px 10px;
+    cursor: pointer;
+    margin-bottom: 2px; }
+  

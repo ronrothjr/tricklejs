@@ -1,0 +1,35 @@
+  #vwFilters {
+    margin: 10px 0;
+    padding-bottom: 10px;
+    margin-top: -10px !important;
+    border-bottom: 0px;
+    display: block; }
+  #vwFilters h2 {
+    margin-right: 20px;
+    margin-bottom: -10px;
+    float: left;
+    color: #0067AC !important; }
+  #vwFilters input:valid {
+    border: 1px solid #b0b0b0;
+    border-radius: 4px; }
+  #vwFilters .filter .btn-primary:active, #vwFilters .filter .btn-primary.active, #vwFilters .labormaterials_filters .open .dropdown-toggle.btn-primary {
+      color: #ffffff;
+      background-color: #3276b1;
+      border-color: #222222; }
+  @media only screen and (min-width: 0px) and (max-width: 600px) {
+    .filter_content {
+      top: 100px !important; } }
+  @media only screen and (min-width: 600px) and (max-width: 1024px) {
+    .filter_content {
+      top: 100px !important; } }
+  @media only screen and (min-width: 1025px) and (max-width: 1199px) {
+    .filter_content {
+      left: 170px !important;
+      top: 100px !important; } }
+  @media only screen and (min-width: 1200px) {
+    .filter_content {
+      left: 170px !important;
+      top: 100px !important; } }
+  .filter .field-validation-error {
+    color: red;
+  }
