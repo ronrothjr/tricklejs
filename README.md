@@ -63,6 +63,12 @@ var filter = new Trickle({
     }
   }
 }); 
+
+$(d).on('FilterPersisted',function(e, data){
+  $('#vwContent').append('<br><br>FilterPersisted: '+
+  JSON.stringify(data));
+  console.log('FilterPersisted: ',data);
+});
 ```
 
 ### Development
