@@ -3,7 +3,7 @@ TrickleJs - filters widget using knockout
 =========
 
 TrickleJs - create global filters using knockout, bootstrap and chosen
-authored by Ron Roth(ronrothjr@gmail.com)
+<br>authored_by_Ron_Roth (ronrothjr@gmail.com)
 
 ```
 var filter = new Trickle({
