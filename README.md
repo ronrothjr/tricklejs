@@ -21,10 +21,9 @@ configuring options to create feature-rich filters.:
 - Radio buttons
 - Date Range
 - List
-
-=====
+====
 [DEMO]
-=====
+====
 
 ### Version
 0.0.1
