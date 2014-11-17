@@ -30,6 +30,7 @@ Just add the Trickle.js file to your project:
 
 ### Usage
 
+Instantiate a Trickle...
 ```
 var filter = new Trickle({
   id: 'FiltersDiv',
@@ -63,7 +64,10 @@ var filter = new Trickle({
     }
   }
 }); 
+```
 
+Listen for the persistTrigger...
+```
 $(d).on('FilterPersisted',function(e, data){
   $('#vwContent').append('<br><br>FilterPersisted: '+
   JSON.stringify(data));
