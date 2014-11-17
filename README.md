@@ -21,6 +21,7 @@ configuring options to create feature-rich filters.:
 - Radio buttons
 - Date Range
 - List
+
 ====
 [DEMO]
 ====
