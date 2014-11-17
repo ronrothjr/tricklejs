@@ -10,6 +10,15 @@ Trickle is a lightweight JavaScript module for easily creating forms and configu
 > The overriding design goal for Trickle is to make global filters as easy as possible to add and maintain.
 > Global filters should be configurable and they should listen for and emit trigger events upon acceptance.
 
+#### Supported widgets:
+
+- Select
+- Select (multiple)
+- Checkbox buttons
+- Radio buttons
+- Date Range
+- List
+
 ### Version
 0.0.1
 
