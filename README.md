@@ -42,15 +42,15 @@ Trickle uses a number of open source projects to work properly:
 
 ### Installation
 
-Just add the Trickle.js file to your project and the dependencies listed above.
+Just add the Trickle.js and Trickle.css files to your project and the dependencies listed above.
 
 ### Usage
 
 Instantiate a Trickle...
 ```
 var filter = new Trickle({
-  id: 'FiltersDiv',
   current: window.currentFilter,
+  id: 'FiltersDiv',                   //optional IF class="trickle" is used
   title: 'Trickle Filters',           //optional
   url: '/Filters/UpdateFilters',      //optional
   all: 'All',                         //optional
@@ -61,7 +61,7 @@ var filter = new Trickle({
   },
   filters: {
     'order': {
-      display: 'displayFilters',
+      display: 'displayFilters',      //optional
       property: 'OrderNumber',
       label: 'Order Number',
       type: 'select',
