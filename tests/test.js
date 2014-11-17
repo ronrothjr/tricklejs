@@ -8,112 +8,94 @@ w.test4 = new Trickle({
   
   title: 'Trickle Demo',
 
-  //url: '/Filters/UpdateFiberhoodFilters',
+  //url: '/Filters/UpdateAreaFilters',
   
   persistTrigger: 'FilterPersisted',
   
   current: w.currentFilter,
   
   model: {
-    displayWorkOrderFiberhoodFilters: w.includeWorkorderFiberhoodFilters,
-    displayFiberhoodFilters: w.includeWorkorderFiberhoodFilters && w.includeFiberhoodFilters,
+    displayRepAreaFilters: w.includeRepAreaFilters,
+    displayAreaFilters: w.includeRepAreaFilters && w.includeAreaFilters,
     displayLocationFilters: w.includeLocationFilters,
     displayLaborAndMaterialFilters: w.includeLaborAndMaterialFilters,
     displayQuantityOrAmountFilters: w.includeQuantityOrAmountFilters,
-    displayCrewFilters: w.includeCrewFilters,
-    displayWorkTypeFilters: w.includeWorkTypeFilters,
+    displayCustFilters: w.includeCustFilters,
+    displayAcctTypeFilters: w.includeAcctTypeFilters,
     displayDateRangeFilters: w.includeDateRangeFilters,
-    displayAllWorkOrdersFilters: w.includeAllWorkOrdersFilter || w.includeCrewFilters,
-    displayAllFiberhoodsFilters: w.includeCrewFilters || !w.includeFiberhoodFilters
+    displayAllRepsFilters: w.includeAllRepsFilter || w.includeCustFilters,
+    displayAllAreasFilters: w.includeCustFilters || !w.includeAreaFilters
   },
 
   filters: {
-    'workorder': {
-      display: 'displayWorkOrderFiberhoodFilters',
+    'rep': {
+      display: 'displayRepAreaFilters',
       type: 'select',
-      property: 'WorkOrderNumber',
-      label: 'Work Order',
+      property: 'RepNumber',
+      label: 'Rep',
       selectOptions: {
         isDictionary: true,
         allowAll: true,
         sortOptions: true,
         bindings: {
-          options: w.availableWorkOrders,
+          options: w.availableReps,
           chosen: { width: '300px' }
         }
       },
       cascade: {
-        child: 'fiberhood', 
-        options: w.allWorkOrderFHoods
+        child: 'area', 
+        options: w.allRepAreas
       }
     },
-    'fiberhood': {
-      display: 'displayWorkOrderFiberhoodFilters',
+    'area': {
+      display: 'displayRepAreaFilters',
       type: 'select',
-      property: 'WorkRequestId',
-      label: 'Fiberhood',
+      property: 'AreaId',
+      label: 'Area',
       selectOptions: {
         allowAll: false,
         sortOptions: true,
         bindings: {
-          options: w.availableFiberhoods,
+          options: w.availableAreas,
           chosen: { width: '300px' },
           optionsValue: 'id',
           optionsText: 'text'
         }
       }
     },
-    'subcontractor': {
-      display: 'displayCrewFilters',
+    'client': {
+      display: 'displayCustFilters',
       type: 'multiple',
-      property: 'CrewFilters.ForemanId',
-      label: 'Subcontractor',
+      property: 'CustFilters.ClientId',
+      label: 'Client',
       selectOptions: {
         allowAll: true,
         sortOptions: true,
         allowAllPlaceholder: '--All--',
         bindings: {
-          options: w.availableSubcontractors,
+          options: w.availableClients,
           chosen: { width: '300px' },
           optionsValue: 'id',
           optionsText: 'text',
-          selectedOptions: w.selectedSubcontractors
+          selectedOptions: w.selectedClients
         }
       }
     },
-    'worktype': {
-      display: 'displayWorkTypeFilters',
+    'accttype': {
+      display: 'displayAcctTypeFilters',
       type: 'multiple',
-      property: 'CrewFilters.WorkTypeId',
-      label: 'Work Type',
+      property: 'CustFilters.AcctTypeId',
+      label: 'Account Type',
       selectOptions: {
         allowAll: true,
         sortOptions: true,
         allowAllPlaceholder: '--All--',
         bindings: {
-          options: w.availableWorkTypes,
+          options: w.availableAcctTypes,
           chosen: { width: '300px' },
           optionsValue: 'id',
           optionsText: 'text',
-          selectedOptions: w.selectedWorkTypes
-        }
-      }
-    },
-    'calloutcategories': {
-      display: 'displayCrewFilters',
-      type: 'multiple',
-      property: 'CrewFilters.CalloutCategoryCodeId',
-      label: 'Callout Category',
-      selectOptions: {
-        allowAll: true,
-        sortOptions: true,
-        allowAllPlaceholder: '--All--',
-        bindings: {
-          options: w.availableCalloutCategories,
-          chosen: { width: '300px' },
-          optionsValue: 'id',
-          optionsText: 'text',
-          selectedOptions: w.selectedCalloutCategories
+          selectedOptions: w.selectedAcctTypes
         }
       }
     },
@@ -143,8 +125,8 @@ w.test4 = new Trickle({
     },
     'daterange': {
       type: 'daterange',
-      property: 'CrewFilters.DateRange',
-      label: 'Work Performed Date',
+      property: 'CustFilters.DateRange',
+      label: 'Delivery Date',
       error: 'Invalid Date Range'
     },
     'location': {
