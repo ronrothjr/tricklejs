@@ -26,7 +26,7 @@ Trickle uses a number of open source projects to work properly:
 
 ### Installation
 
-Just add the Trickle.js file to your project:
+Just add the Trickle.js file to your project and the dependencies listed above.
 
 ### Usage
 
@@ -82,7 +82,7 @@ Want to contribute? Great!
 ### Todo's
 
  - Write Tests
- - Convert binding methods to optionally work AngularJs
+ - Convert binding methods to work in AngularJs
  - Add Code Comments
 
 License
