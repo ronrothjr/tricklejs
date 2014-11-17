@@ -22,6 +22,10 @@ configuring options to create feature-rich filters.:
 - Date Range
 - List
 
+=====
+[DEMO]
+=====
+
 ### Version
 0.0.1
 
@@ -102,6 +106,7 @@ License
 
 MIT
 
+[DEMO]:https://preview.c9.io/ronrothjr/trickle/tests/index.html?_c9_id=livepreview0&_c9_host=https://ide.c9.io
 [john gruber]:http://daringfireball.net/
 [@thomasfuchs]:http://twitter.com/thomasfuchs
 [1]:http://daringfireball.net/projects/markdown/

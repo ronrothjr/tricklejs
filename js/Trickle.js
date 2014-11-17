@@ -76,9 +76,18 @@ var filter = new Trickle({
           return false;
         }
         if (!options.id) {
-          console.log('Trickle: no element id');
-          return false;
-        }
+          var $test = $('.trickle');
+          if ($test.length === 1) {
+            this.selector = '.trickle';
+          } else if ($test.length === 0) {
+            console.log('Trickle: no element id or div with class="trickle"');
+            return false;
+          } else if ($test.length > 1) {
+            console.log('Trickle: multiple divs with trickle class assigned');
+            return false;
+          }
+        } else
+          this.selector = '#'+options.id;
         if (!options.filters) {
           console.log('Trickle: no filters');
           return false;
@@ -87,7 +96,7 @@ var filter = new Trickle({
       },
       
       write: function () {
-        (this.$view = $('#'+this.id)).append(this.html('view'));
+        (this.$view = $(this.selector)).append(this.html('view'));
         this.$button = this.$view.find('.filter_button');
         this.$labels = this.$view.find('.filter_labels');
         this.$content = this.$view.find('.filter_content');
