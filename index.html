@@ -1,0 +1,395 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Tricklejs by ronrothjr</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Tricklejs</h1>
+        <p>TrickleJs - Global filters widget using Knockout</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/ronrothjr/tricklejs" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/ronrothjr/tricklejs/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/ronrothjr/tricklejs/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>
+<a id="tricklejs" class="anchor" href="#tricklejs" aria-hidden="true"><span class="octicon octicon-link"></span></a>TrickleJs</h1>
+
+<p>Trickle is a global filters widget.</p>
+
+<ul>
+<li>Instantiate a Trickle object (with configuration)</li>
+<li>Listen for triggers and apply filters in a callback</li>
+</ul>
+
+<p>Trickle is a lightweight JavaScript module for easily creating forms and 
+configuring options to create feature-rich filters:</p>
+
+<blockquote>
+<p>The overriding design goal for Trickle is to make global filters as easy as 
+possible to add and maintain.
+Global filters should be configurable and they should listen for and emit 
+events upon acceptance.</p>
+</blockquote>
+
+<h2>
+<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://preview.c9.io/ronrothjr/trickle/tests/index.html?_c9_id=livepreview0&amp;_c9_host=https://ide.c9.io">DEMO</a>
+</h2>
+
+<h4>
+<a id="supported-widgets" class="anchor" href="#supported-widgets" aria-hidden="true"><span class="octicon octicon-link"></span></a>Supported widgets:</h4>
+
+<ul>
+<li>Select</li>
+<li>Select (multiple)</li>
+<li>Checkbox buttons</li>
+<li>Radio buttons</li>
+<li>Date Range</li>
+<li>List</li>
+</ul>
+
+<h3>
+<a id="version" class="anchor" href="#version" aria-hidden="true"><span class="octicon octicon-link"></span></a>Version</h3>
+
+<p>0.0.1</p>
+
+<h3>
+<a id="tech" class="anchor" href="#tech" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tech</h3>
+
+<p>Trickle uses a number of open source projects to work properly:</p>
+
+<ul>
+<li>
+<a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a> - the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.</li>
+<li>
+<a href="http://knockoutjs.com/">Knockout</a> - Simplify dynamic JavaScript UIs with the Model-View-View Model (MVVM)</li>
+<li>
+<a href="http://harvesthq.github.io/chosen/">Chosen</a> - a jQuery plugin that makes long, unwieldy select boxes much more user-friendly.</li>
+<li>
+<a href="https://lodash.com/">Lodash</a> - A utility library delivering consistency, customization, performance, &amp; extras.</li>
+<li>
+<a href="http://faulknercs.github.io/Knockstrap/">Knockstrap</a> - binding library for Knockout.js, which provides binding to Twitter Bootstrap widgets</li>
+<li>
+<a href="http://jquery.com">jQuery</a> - of course</li>
+</ul>
+
+<h3>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h3>
+
+<p>Just add the Trickle.js and Trickle.css files to your project and the dependencies listed above.</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="instantiate-a-trickle" class="anchor" href="#instantiate-a-trickle" aria-hidden="true"><span class="octicon octicon-link"></span></a>Instantiate a Trickle...</h3>
+
+<pre><code>var filter = new Trickle({
+  filters: {
+    'order': {
+      property: 'OrderNumber',
+      label: 'Order Number',
+      type: 'select',
+      selectOptions: {
+        allowAll: true,
+        sortOptions: true,
+        bindings: {
+          options: window.availableItems,
+          chosen: { width: '300px' },
+          optionsValue: 'id',
+          optionsText: 'text',
+          selectedOptions: window.selectedItems
+        }
+      }
+    }
+  }
+}); 
+</code></pre>
+
+<h3>
+<a id="listen-for-the-persisttrigger" class="anchor" href="#listen-for-the-persisttrigger" aria-hidden="true"><span class="octicon octicon-link"></span></a>Listen for the persistTrigger...</h3>
+
+<pre><code>$(d).on('FilterPersisted',function(e, data){
+  $('#vwContent').append('&lt;br&gt;&lt;br&gt;FilterPersisted: '+
+  JSON.stringify(data));
+  console.log('FilterPersisted: ',data);
+});
+</code></pre>
+
+<h3>
+<a id="trickle-options" class="anchor" href="#trickle-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Trickle options...</h3>
+
+<pre><code>new Trickle({
+  current: window.currentFilter,      //optional - current state of filters
+  id: 'FiltersDiv',                   //optional IF class="trickle" is used
+  title: 'Trickle Filters',           //optional - title for filters
+  url: '/Filters/UpdateFilters',      //optional - url to persist filters
+  all: 'All',                         //optional - default value for allowAll property
+  hidden: true,                       //optional - hides/shows filters with button
+  persistTrigger: 'FiltersPersisted', //optional - trigger emitted after clicking Apply
+  model: {                            //optional - optional model attributes
+    displayFilters: window.includeFilters,
+  }
+});
+
+</code></pre>
+
+<h3>
+<a id="filter-options" class="anchor" href="#filter-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Filter options...</h3>
+
+<pre><code>var filter = new Trickle({
+  filters: {
+</code></pre>
+
+<h5>
+<a id="key---the-name-of-the-filter" class="anchor" href="#key---the-name-of-the-filter" aria-hidden="true"><span class="octicon octicon-link"></span></a>key - the name of the filter</h5>
+
+<pre><code>    'order': {
+</code></pre>
+
+<h5>
+<a id="type---indicates-the-widget-type" class="anchor" href="#type---indicates-the-widget-type" aria-hidden="true"><span class="octicon octicon-link"></span></a>type - indicates the widget type</h5>
+
+<pre><code>      type: 'select',
+</code></pre>
+
+<h5>
+<a id="property---specifies-the-name-of-the-property-this-filter-emits" class="anchor" href="#property---specifies-the-name-of-the-property-this-filter-emits" aria-hidden="true"><span class="octicon octicon-link"></span></a>property - specifies the name of the property this filter emits</h5>
+
+<pre><code>      property: 'RepNumber',
+</code></pre>
+
+<h5>
+<a id="label---the-label-displayed-above-the-filter" class="anchor" href="#label---the-label-displayed-above-the-filter" aria-hidden="true"><span class="octicon octicon-link"></span></a>label - the label displayed above the filter</h5>
+
+<pre><code>      label: 'Rep',
+</code></pre>
+
+<h5>
+<a id="showcontentlabel---shows-and-hides-the-label-within-filter-content" class="anchor" href="#showcontentlabel---shows-and-hides-the-label-within-filter-content" aria-hidden="true"><span class="octicon octicon-link"></span></a>showContentLabel - shows and hides the label within filter content</h5>
+
+<pre><code>      showContentLabel: false,        //optional
+</code></pre>
+
+<h5>
+<a id="display---shows-and-hides-the-filter-function-that-evaluates-to-true" class="anchor" href="#display---shows-and-hides-the-filter-function-that-evaluates-to-true" aria-hidden="true"><span class="octicon octicon-link"></span></a>display - shows and hides the filter (function that evaluates to true)</h5>
+
+<pre><code>      display: 'displayFilters',      //optional
+</code></pre>
+
+<h5>
+<a id="error---message-to-display-when-validation-fails" class="anchor" href="#error---message-to-display-when-validation-fails" aria-hidden="true"><span class="octicon octicon-link"></span></a>error - message to display when validation fails</h5>
+
+<pre><code>      error: 'Please select one',     //optional
+</code></pre>
+
+<h5>
+<a id="selectoptions---contains-options-for-select-lists" class="anchor" href="#selectoptions---contains-options-for-select-lists" aria-hidden="true"><span class="octicon octicon-link"></span></a>selectOptions - contains options for select lists</h5>
+
+<pre><code>      type: 'select',
+      property: 'RepNumber',
+      label: 'Rep',
+      selectOptions: {
+        isDictionary: true,
+        allowAll: true,
+        sortOptions: true,
+        bindings: {
+          options: w.availableReps,
+          chosen: { width: '300px' },
+          optionsValue: 'id',
+          optionsText: 'text',
+          selectedOptions: window.selectedItems
+        }
+      },
+</code></pre>
+
+<h5>
+<a id="cascade---options-for-cascading-to-another-select-list" class="anchor" href="#cascade---options-for-cascading-to-another-select-list" aria-hidden="true"><span class="octicon octicon-link"></span></a>cascade - options for cascading to another select list</h5>
+
+<pre><code>      cascade: {
+        child: 'area', 
+        options: w.allRepAreas
+      },
+</code></pre>
+
+<h5>
+<a id="onpersistlocalonly---if-this-is-the-only-filter-changed-send-this-trigger-instead-of-the-persisttrigger" class="anchor" href="#onpersistlocalonly---if-this-is-the-only-filter-changed-send-this-trigger-instead-of-the-persisttrigger" aria-hidden="true"><span class="octicon octicon-link"></span></a>onPersistLocalOnly - if this is the only filter changed, send this trigger instead of the persistTrigger</h5>
+
+<pre><code>      onPersistLocalOnly: 'QuantityToggled' 
+    }
+  }
+}); 
+</code></pre>
+
+<h3>
+<a id="widget-types" class="anchor" href="#widget-types" aria-hidden="true"><span class="octicon octicon-link"></span></a>Widget types...</h3>
+
+<h5>
+<a id="select" class="anchor" href="#select" aria-hidden="true"><span class="octicon octicon-link"></span></a>Select</h5>
+
+<pre><code>    'rep': {
+      type: 'select',
+      property: 'RepNumber',
+      label: 'Rep',
+      selectOptions: {
+        isDictionary: true,
+        allowAll: true,
+        sortOptions: true,
+        bindings: {
+          options: w.availableReps,   //can be object, function or array
+          chosen: { width: '300px' }  //chosen.js options
+        }
+      },
+      cascade: {
+        child: 'area', 
+        options: w.allRepAreas        //can be object, function or array
+      }
+    }
+</code></pre>
+
+<h5>
+<a id="multiple" class="anchor" href="#multiple" aria-hidden="true"><span class="octicon octicon-link"></span></a>Multiple</h5>
+
+<pre><code>    'accttype': {
+      type: 'multiple',
+      property: 'CustFilters.AcctTypeId',
+      label: 'Account Type',
+      selectOptions: {
+        allowAll: true,
+        sortOptions: true,
+        allowAllPlaceholder: '--All--',
+        bindings: {
+          options: w.availableAcctTypes,   //can be object, function or array
+          chosen: { width: '300px' },
+          optionsValue: 'id',
+          optionsText: 'text',
+          selectedOptions: w.selectedAcctTypes // must be Array
+        }
+      }
+    }
+</code></pre>
+
+<h5>
+<a id="radio-buttons" class="anchor" href="#radio-buttons" aria-hidden="true"><span class="octicon octicon-link"></span></a>Radio buttons</h5>
+
+<pre><code>    'quantityamount': {
+      type: 'radio',
+      property: 'QuantityToggle',
+      label: 'Qty/Amt',
+      options: ['Qty','Amt'],
+      showContentLabel: false,
+      onPersistLocalOnly: 'QuantityToggled' 
+    }
+</code></pre>
+
+<h5>
+<a id="checkbox-buttons" class="anchor" href="#checkbox-buttons" aria-hidden="true"><span class="octicon octicon-link"></span></a>Checkbox buttons</h5>
+
+<pre><code>    'labormaterials': {
+      type: 'checkbox',
+      property: ['IncludeLabor','IncludeMaterials'],
+      label: {
+        'IncludeLabor': 'Labor',
+        'IncludeMaterials': 'Materials'
+      },
+      options: {
+        'IncludeLabor': 'Labor',
+        'IncludeMaterials': 'Materials'
+      },
+      showContentLabel: false,
+      error: 'Please select one'
+    }
+</code></pre>
+
+<h5>
+<a id="date-range" class="anchor" href="#date-range" aria-hidden="true"><span class="octicon octicon-link"></span></a>Date Range</h5>
+
+<pre><code>    'delivery': {
+      type: 'daterange',
+      property: 'CustFilters.DateRange',
+      label: 'Delivery Date',
+      error: 'Invalid Date Range'
+    }
+</code></pre>
+
+<h5>
+<a id="list" class="anchor" href="#list" aria-hidden="true"><span class="octicon octicon-link"></span></a>List</h5>
+
+<pre><code>    'location': {
+      type: 'listbuilder',
+      property: 'LocationFilters',
+      label: 'Location',
+      parameters: {
+        'state': {
+          label: 'State',
+          options: w.availableStates,
+          cascade: {
+            child: 'county', 
+            options: w.availableLocationOptions
+          }
+        },
+        'county': {
+          label: 'County',
+          options: w.availableCounties
+        }
+      }
+    }
+</code></pre>
+
+<h3>
+<a id="development" class="anchor" href="#development" aria-hidden="true"><span class="octicon octicon-link"></span></a>Development</h3>
+
+<p>Want to contribute? Great!</p>
+
+<h3>
+<a id="todos" class="anchor" href="#todos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Todo's</h3>
+
+<ul>
+<li>Documentation</li>
+<li>Write Tests</li>
+<li>Allow standard and custom validators</li>
+<li>Convert binding methods to work in AngularJs</li>
+<li>Add Code Comments</li>
+</ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>MIT</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/ronrothjr">ronrothjr</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
