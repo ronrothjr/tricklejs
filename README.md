@@ -237,7 +237,6 @@ var filter = new Trickle({
 #####List
 ```
     'location': {
-      display: 'displayLocationFilters',
       type: 'listbuilder',
       property: 'LocationFilters',
       label: 'Location',
