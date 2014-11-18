@@ -11,7 +11,7 @@ configuring options to create feature-rich filters:
 > The overriding design goal for Trickle is to make global filters as easy as 
 > possible to add and maintain.
 > Global filters should be configurable and they should listen for and emit 
-> trigger events upon acceptance.
+> events upon acceptance.
 
 ##[DEMO]
 
