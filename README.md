@@ -44,9 +44,9 @@ Trickle uses a number of open source projects to work properly:
 
 Just add the Trickle.js and Trickle.css files to your project and the dependencies listed above.
 
-### Usage
+## Usage
 
-#Instantiate a Trickle...
+###Instantiate a Trickle...
 ```
 var filter = new Trickle({
   filters: {
@@ -70,7 +70,7 @@ var filter = new Trickle({
 }); 
 ```
 
-#Listen for the persistTrigger...
+###Listen for the persistTrigger...
 ```
 $(d).on('FilterPersisted',function(e, data){
   $('#vwContent').append('<br><br>FilterPersisted: '+
@@ -79,7 +79,7 @@ $(d).on('FilterPersisted',function(e, data){
 });
 ```
 
-#Trickle options...
+###Trickle options...
 ```
 new Trickle({
   current: window.currentFilter,      //optional
