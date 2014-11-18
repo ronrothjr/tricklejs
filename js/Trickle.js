@@ -53,6 +53,7 @@ var filter = new Trickle({
         if (!this.validateOptions(options))
           return false;
         _.assign(this, options);
+        this.current = this.current || {};
         _.bindAll(this);
         return true;
       },
@@ -228,9 +229,16 @@ var filter = new Trickle({
       getDescendant: function (prop, obj) {
         var a = _.isArray(prop) ? prop : prop.split(".");
         if (a.length === 1)
-          return obj[a[0]];
+          return this.getDescendantIfExistsElseEmpty(a[0], obj);
         else if (a.length > 1)
-          return this.getDescendant(a, obj[a.shift()]);
+          return this.getDescendant(a, 
+            this.getDescendantIfExistsElseEmpty(a.shift(), obj));
+      },
+      
+      getDescendantIfExistsElseEmpty: function (prop, obj) {
+        if (!obj[prop])
+          obj[prop] = '';
+        return obj[prop];
       },
       
       setDescendantProp: function (obj, prop, val) {

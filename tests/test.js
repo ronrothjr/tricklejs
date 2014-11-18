@@ -26,7 +26,7 @@ w.test4 = new Trickle({
     displayAllRepsFilters: w.includeAllRepsFilter || w.includeCustFilters,
     displayAllAreasFilters: w.includeCustFilters || !w.includeAreaFilters
   },
-
+  
   filters: {
     'rep': {
       display: 'displayRepAreaFilters',

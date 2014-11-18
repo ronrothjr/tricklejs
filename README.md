@@ -80,14 +80,14 @@ $(d).on('FilterPersisted',function(e, data){
 ###Trickle options...
 ```
 new Trickle({
-  current: window.currentFilter,      //optional
+  current: window.currentFilter,      //optional - current state of filters
   id: 'FiltersDiv',                   //optional IF class="trickle" is used
-  title: 'Trickle Filters',           //optional
-  url: '/Filters/UpdateFilters',      //optional
-  all: 'All',                         //optional
-  hidden: true,                       //optional
-  persistTrigger: 'FiltersPersisted', //optional
-  model: {                            //optional
+  title: 'Trickle Filters',           //optional - title for filters
+  url: '/Filters/UpdateFilters',      //optional - url to persist filters
+  all: 'All',                         //optional - default value for allowAll property
+  hidden: true,                       //optional - hides/shows filters with button
+  persistTrigger: 'FiltersPersisted', //optional - trigger emitted after clicking Apply
+  model: {                            //optional - optional model attributes
     displayFilters: window.includeFilters,
   }
 });
