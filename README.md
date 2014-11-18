@@ -1,4 +1,4 @@
-# TrickleJs - [DEMO]
+# TrickleJs
 
 Trickle is a global filters widget.
 
@@ -13,6 +13,8 @@ configuring options to create feature-rich filters.:
 > Global filters should be configurable and they should listen for and emit 
 > trigger events upon acceptance.
 
+##[DEMO]
+
 #### Supported widgets:
 
 - Select
@@ -21,8 +23,6 @@ configuring options to create feature-rich filters.:
 - Radio buttons
 - Date Range
 - List
-
-##[DEMO]
 
 ### Version
 0.0.1
