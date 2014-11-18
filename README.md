@@ -107,7 +107,7 @@ var filter = new Trickle({
 ```
       type: 'select',
 ```
-#####property - specifies the name of the property this filter emits with the filter
+#####property - specifies the name of the property this filter emits
 ```
       property: 'RepNumber',
 ```
