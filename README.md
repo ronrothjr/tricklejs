@@ -96,36 +96,36 @@ new Trickle({
 
 ```
 
-#Filter options...
+###Filter options...
 ```
 var filter = new Trickle({
   filters: {
 ```
-key - the name of the filter
+#####key - the name of the filter
 ```
     'order': {
 ```
-type - indicates the widget type
+#####type - indicates the widget type
 ```
       type: 'select',
 ```
-property - specifies the name of the property this filter emits with the filter
+#####property - specifies the name of the property this filter emits with the filter
 ```
       property: 'RepNumber',
 ```
-label - the label displayed above the filter
+#####label - the label displayed above the filter
 ```
       label: 'Rep',
 ```
-showContentLabel - shows and hides the label within filter content
+#####showContentLabel - shows and hides the label within filter content
 ```
       showContentLabel: false,        //optional
 ```
-display - shows and hides the filter (function that evaluates to true)
+#####display - shows and hides the filter (function that evaluates to true)
 ```
       display: 'displayFilters',      //optional
 ```
-selectOptions - contains options for select lists
+#####selectOptions - contains options for select lists
 ```
       type: 'select',
       property: 'RepNumber',
@@ -143,7 +143,7 @@ selectOptions - contains options for select lists
         }
       },
 ```
-cascade - options for cascading to another select list
+#####cascade - options for cascading to another select list
 ```
       cascade: {
         child: 'area', 
@@ -156,7 +156,7 @@ cascade - options for cascading to another select list
 
 ###Widget types...
 
-Select
+#####Select
 ```
     'rep': {
       type: 'select',
@@ -177,7 +177,7 @@ Select
       }
     }
 ```
-Multiple
+#####Multiple
 ```
     'accttype': {
       type: 'multiple',
@@ -197,7 +197,7 @@ Multiple
       }
     }
 ```
-Radio buttons
+#####Radio buttons
 ```
     'quantityamount': {
       type: 'radio',
@@ -208,7 +208,7 @@ Radio buttons
       onPersistLocalOnly: 'QuantityToggled'
     }
 ```
-Checkbox buttons
+#####Checkbox buttons
 ```
     'labormaterials': {
       type: 'checkbox',
@@ -225,7 +225,7 @@ Checkbox buttons
       error: 'Please select one'
     }
 ```
-Date Range
+#####Date Range
 ```
     'delivery': {
       type: 'daterange',
@@ -234,7 +234,7 @@ Date Range
       error: 'Invalid Date Range'
     }
 ```
-List
+#####List
 ```
     'location': {
       display: 'displayLocationFilters',
