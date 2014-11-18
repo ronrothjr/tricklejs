@@ -9,7 +9,7 @@
     "share": {
         "@preview": false,
         "@app": false,
-        "@useOwnerSettings": false
+        "@useOwnerSettings": true
     },
     "ace": {
         "@newLineMode": "windows",

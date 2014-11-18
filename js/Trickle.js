@@ -187,7 +187,8 @@ var filter = new Trickle({
           });
           _.each(filter.selectOptions.bindings, this.addBinding);
         }
-        if (filter.cascade){
+        if (filter.cascade && filter.cascade.child && 
+        filters[filter.cascade.child]){
           this.addCascadeFunction({
             filter: filter, 
             child: filters[filter.cascade.child]
