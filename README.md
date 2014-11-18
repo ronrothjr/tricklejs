@@ -97,6 +97,7 @@ Want to contribute? Great!
 
 ### Todo's
 
+ - Documentation
  - Write Tests
  - Convert binding methods to work in AngularJs
  - Add Code Comments
