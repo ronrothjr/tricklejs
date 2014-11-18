@@ -146,7 +146,11 @@ var filter = new Trickle({
       cascade: {
         child: 'area', 
         options: w.allRepAreas
-      }
+      },
+```
+#####onPersistLocalOnly - if this is the only filter changed, send this trigger instead of the persistTrigger
+```
+      onPersistLocalOnly: 'QuantityToggled' 
     }
   }
 }); 
@@ -165,13 +169,13 @@ var filter = new Trickle({
         allowAll: true,
         sortOptions: true,
         bindings: {
-          options: w.availableReps,
-          chosen: { width: '300px' }
+          options: w.availableReps,   //can be object, function or array
+          chosen: { width: '300px' }  //chosen.js options
         }
       },
       cascade: {
         child: 'area', 
-        options: w.allRepAreas
+        options: w.allRepAreas        //can be object, function or array
       }
     }
 ```
@@ -186,11 +190,11 @@ var filter = new Trickle({
         sortOptions: true,
         allowAllPlaceholder: '--All--',
         bindings: {
-          options: w.availableAcctTypes,
+          options: w.availableAcctTypes,   //can be object, function or array
           chosen: { width: '300px' },
           optionsValue: 'id',
           optionsText: 'text',
-          selectedOptions: w.selectedAcctTypes
+          selectedOptions: w.selectedAcctTypes // must be Array
         }
       }
     }
@@ -203,7 +207,7 @@ var filter = new Trickle({
       label: 'Qty/Amt',
       options: ['Qty','Amt'],
       showContentLabel: false,
-      onPersistLocalOnly: 'QuantityToggled'
+      onPersistLocalOnly: 'QuantityToggled' 
     }
 ```
 #####Checkbox buttons
