@@ -123,6 +123,10 @@ var filter = new Trickle({
 ```
       display: 'displayFilters',      //optional
 ```
+#####error - message to display when validation fails
+```
+      error: 'Please select one',     //optional
+```
 #####selectOptions - contains options for select lists
 ```
       type: 'select',
@@ -267,6 +271,7 @@ Want to contribute? Great!
 
  - Documentation
  - Write Tests
+ - Allow standard and custom validators
  - Convert binding methods to work in AngularJs
  - Add Code Comments
 
