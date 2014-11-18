@@ -46,27 +46,15 @@ Just add the Trickle.js and Trickle.css files to your project and the dependenci
 
 ### Usage
 
-Instantiate a Trickle...
+#Instantiate a Trickle...
 ```
 var filter = new Trickle({
-  current: window.currentFilter,
-  id: 'FiltersDiv',                   //optional IF class="trickle" is used
-  title: 'Trickle Filters',           //optional
-  url: '/Filters/UpdateFilters',      //optional
-  all: 'All',                         //optional
-  hidden: true,                       //optional
-  persistTrigger: 'FiltersPersisted', //optional
-  model: {                            //optional
-    displayFilters: window.includeFilters,
-  },
   filters: {
     'order': {
-      display: 'displayFilters',      //optional
       property: 'OrderNumber',
       label: 'Order Number',
       type: 'select',
       selectOptions: {
-        isOptionsDictionary: true,
         allowAll: true,
         sortOptions: true,
         bindings: {
@@ -82,13 +70,192 @@ var filter = new Trickle({
 }); 
 ```
 
-Listen for the persistTrigger...
+#Listen for the persistTrigger...
 ```
 $(d).on('FilterPersisted',function(e, data){
   $('#vwContent').append('<br><br>FilterPersisted: '+
   JSON.stringify(data));
   console.log('FilterPersisted: ',data);
 });
+```
+
+#Trickle options...
+```
+new Trickle({
+  current: window.currentFilter,      //optional
+  id: 'FiltersDiv',                   //optional IF class="trickle" is used
+  title: 'Trickle Filters',           //optional
+  url: '/Filters/UpdateFilters',      //optional
+  all: 'All',                         //optional
+  hidden: true,                       //optional
+  persistTrigger: 'FiltersPersisted', //optional
+  model: {                            //optional
+    displayFilters: window.includeFilters,
+  }
+});
+
+```
+
+#Filter options...
+```
+var filter = new Trickle({
+  filters: {
+```
+key - the name of the filter
+```
+    'order': {
+```
+type - indicates the widget type
+```
+      type: 'select',
+```
+property - specifies the name of the property this filter emits with the filter
+```
+      property: 'RepNumber',
+```
+label - the label displayed above the filter
+```
+      label: 'Rep',
+```
+showContentLabel - shows and hides the label within filter content
+```
+      showContentLabel: false,        //optional
+```
+display - shows and hides the filter (function that evaluates to true)
+```
+      display: 'displayFilters',      //optional
+```
+selectOptions - contains options for select lists
+```
+      type: 'select',
+      property: 'RepNumber',
+      label: 'Rep',
+      selectOptions: {
+        isDictionary: true,
+        allowAll: true,
+        sortOptions: true,
+        bindings: {
+          options: w.availableReps,
+          chosen: { width: '300px' },
+          optionsValue: 'id',
+          optionsText: 'text',
+          selectedOptions: window.selectedItems
+        }
+      },
+```
+cascade - options for cascading to another select list
+```
+      cascade: {
+        child: 'area', 
+        options: w.allRepAreas
+      }
+    }
+  }
+}); 
+```
+
+###Widget types...
+
+Select
+```
+    'rep': {
+      type: 'select',
+      property: 'RepNumber',
+      label: 'Rep',
+      selectOptions: {
+        isDictionary: true,
+        allowAll: true,
+        sortOptions: true,
+        bindings: {
+          options: w.availableReps,
+          chosen: { width: '300px' }
+        }
+      },
+      cascade: {
+        child: 'area', 
+        options: w.allRepAreas
+      }
+    }
+```
+Multiple
+```
+    'accttype': {
+      type: 'multiple',
+      property: 'CustFilters.AcctTypeId',
+      label: 'Account Type',
+      selectOptions: {
+        allowAll: true,
+        sortOptions: true,
+        allowAllPlaceholder: '--All--',
+        bindings: {
+          options: w.availableAcctTypes,
+          chosen: { width: '300px' },
+          optionsValue: 'id',
+          optionsText: 'text',
+          selectedOptions: w.selectedAcctTypes
+        }
+      }
+    }
+```
+Radio buttons
+```
+    'quantityamount': {
+      type: 'radio',
+      property: 'QuantityToggle',
+      label: 'Qty/Amt',
+      options: ['Qty','Amt'],
+      showContentLabel: false,
+      onPersistLocalOnly: 'QuantityToggled'
+    }
+```
+Checkbox buttons
+```
+    'labormaterials': {
+      type: 'checkbox',
+      property: ['IncludeLabor','IncludeMaterials'],
+      label: {
+        'IncludeLabor': 'Labor',
+        'IncludeMaterials': 'Materials'
+      },
+      options: {
+        'IncludeLabor': 'Labor',
+        'IncludeMaterials': 'Materials'
+      },
+      showContentLabel: false,
+      error: 'Please select one'
+    }
+```
+Date Range
+```
+    'delivery': {
+      type: 'daterange',
+      property: 'CustFilters.DateRange',
+      label: 'Delivery Date',
+      error: 'Invalid Date Range'
+    }
+```
+List
+```
+    'location': {
+      display: 'displayLocationFilters',
+      type: 'listbuilder',
+      property: 'LocationFilters',
+      label: 'Location',
+      parameters: {
+        'state': {
+          label: 'State',
+          options: w.availableStates,
+          cascade: {
+            child: 'county', 
+            options: w.availableLocationOptions
+          }
+        },
+        'county': {
+          label: 'County',
+          options: w.availableCounties
+        }
+      }
+    }
 ```
 
 ### Development
