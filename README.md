@@ -1,4 +1,4 @@
-# TrickleJs
+# TrickleJs - [DEMO]
 
 Trickle is a global filters widget.
 
@@ -22,7 +22,7 @@ configuring options to create feature-rich filters.:
 - Date Range
 - List
 
-###[DEMO]
+##[DEMO]
 
 ### Version
 0.0.1
