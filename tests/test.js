@@ -53,7 +53,7 @@ w.test4 = new Trickle({
       property: 'AreaId',
       label: 'Area',
       selectOptions: {
-        allowAll: false,
+        allowAll: true,
         sortOptions: true,
         bindings: {
           options: w.availableAreas,

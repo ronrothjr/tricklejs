@@ -447,13 +447,12 @@ var filter = new Trickle({
         var config = this.setCascadeConfig(options);
         this.model[config._parent.id+'_cascade'] = _.bind(function (e) {
           _.delay(_.bind(function (){
-            console.log('parent',config.koParent);
             this.val = this.model[config.koParent]();
             this.cascadeValue = config.bindings.optionsValue;
             this.cascadeText = config.bindings.optionsText;
             this.opts = ko.observableArray();
-            _.each(config.options[this.val] || config.options, 
-              this.addCascadeOption, this);
+            this.cascadeOptions = config.options[this.val] || config.options;
+            _.each(this.cascadeOptions, this.addCascadeOption, this);
             if (config._child.selectOptions.sortOptions)
               this.opts.sort(this.sortCascadeOptions);
             if (config._child.selectOptions.allowAll) {
@@ -497,11 +496,12 @@ var filter = new Trickle({
       },
       
       addCascadeOption: function(option, key) {
-        this.opt = {};
         this.key = key;
         if (this.val === this.all){
           _.each(option, this.setCascadeOptionAll);
         }else{
+          this.opt = {};
+          this.key = key;
           if (_.isObject(option)) {
             this.opt[this.cascadeValue] = Object.keys(option)[0];
             this.opt[this.cascadeText] = option[Object.keys(option)[0]];
@@ -509,13 +509,15 @@ var filter = new Trickle({
             this.opt[this.cascadeValue] = key;
             this.opt[this.cascadeText] = option;
           }
+          this.opts.push(this.opt);
         }
-        this.opts.push(this.opt);
       },
       
       setCascadeOptionAll: function(option2, key2){
+        this.opt = {};
         this.opt[this.cascadeValue] = key2;
         this.opt[this.cascadeText] = option2 + ' - ' + this.key;
+        this.opts.push(this.opt);
       },
       
       sortCascadeOptions: function (i1, i2) {
