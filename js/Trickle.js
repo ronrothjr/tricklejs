@@ -421,6 +421,8 @@ var filter = new Trickle({
           this.val = this.val.length===0 ? 
             this.all : this.val.length + ' selected';
         }
+        if (this.filter.type === 'checkbox')
+          this.val = this.val ? 'Yes' : 'No';
         if (this.filter.type === 'listbuilder') {
           this.val = this.model[id]();
           this.val = this.val.length===0 ? 
@@ -445,6 +447,7 @@ var filter = new Trickle({
         var config = this.setCascadeConfig(options);
         this.model[config._parent.id+'_cascade'] = _.bind(function (e) {
           _.delay(_.bind(function (){
+            console.log('parent',config.koParent);
             this.val = this.model[config.koParent]();
             this.cascadeValue = config.bindings.optionsValue;
             this.cascadeText = config.bindings.optionsText;
@@ -463,6 +466,9 @@ var filter = new Trickle({
             this.model[config._child.id+'_options'](this.opts());
           }, this), 1);
         }, this);
+        _.delay(_.bind(function (){
+          this.model[config._parent.id+'_cascade']();
+        }, this), 1);
       },
       
       setCascadeConfig: function(config) {
@@ -684,11 +690,7 @@ var filter = new Trickle({
 				        <%=label[val]%></label><br/> \n\
                 <span id="lbl<%=id%>_<%=val.replace(/\\./g,\'_\')%>" \n\
                   class="label label-primary pull-left" \n\
-                data-bind="text: <% \
-                  if (type===\'checkbox\') \
-                  { %>current_<%=id%>_<%=val.replace(/\\./g,\'_\')%>() ? \'Yes\' : \'No\'<% } \
-                  else \
-                  {%>current_<%=id%>_<%=val.replace(/\\./g,\'_\')%><% } %>"/> \n\
+                data-bind="text: current_<%=id%>_<%=val.replace(/\\./g,\'_\')%>"/> \n\
               </div> \n\
               <% }) %>',
         bindings: ' \n\
