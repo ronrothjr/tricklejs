@@ -311,7 +311,7 @@ Want to contribute? Great!
 
 ### Todo's
 
- - Documentation
+ - ~~Documentation~~
  - Write Tests
  - Allow standard and custom validators
  - Convert binding methods to work in AngularJs
