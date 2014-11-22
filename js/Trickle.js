@@ -331,10 +331,11 @@ var filter = new Trickle({
       },
       
       applyFilterValue: function (property){
-        var val = this.getFilterValue(this.key, property);
-        if (_.isObject(val.value) ? 
-        !_.isEqual(val.value,val.original) : 
-        val.value != val.original)
+        var val = this.getFilterValue(this.key, property),
+            changed = _.isObject(val.value) ? 
+              !_.isEqual(val.value,val.original) : 
+              val.value != val.original;
+        if (changed)
           this.changed[this.filter.id] = true;
         this.setDescendantProp(this.current, property, val.value);
       },
@@ -358,11 +359,11 @@ var filter = new Trickle({
       
       persistFiltersSuccess: function (response) {
         this.applyCurrent();
-        _.each(this.filters, _.bind(function(filter){
-          if (this.changed[filter.id]) {
+        _.each(this.filters, _.bind(function(filter, key){
+          if (this.changed[key]) {
             if (filter.onChanged)
               $.event.trigger(filter.onChanged, this.current);
-            if (Object.keys(this.changed).length === 1 && filter.onsetCascadeConfig) {
+            if (Object.keys(this.changed).length === 1 && filter.onPersistLocalOnly) {
               $.event.trigger(filter.onPersistLocalOnly, this.current);
               this.PersistLocalOnly = true;
             }
