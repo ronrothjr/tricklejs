@@ -94,6 +94,47 @@ new Trickle({
 
 ```
 
+###Trickle methods...
+
+#####get - get the value of a filter property or the current filters object
+```
+filter.get('RepNumber');
+```
+```
+var currentFilters = filter.get();
+```
+#####set - set the value of a filter or multiple values of a filter
+```
+filter.set('RepNumber', 'Brad');
+```
+```
+filter.set({
+    'RepNumber', 'Brad',
+    'Area', '21'
+});
+```
+#####reset - set the current filters object to the original state And optionally set the value of one or more filters
+```
+filter.reset();
+```
+```
+filter.reset('RepNumber', 'Brad');
+```
+```
+filter.reset({
+    'RepNumber', 'Brad',
+    'Area', '21'
+});
+```
+#####apply - apply the filters as they are represented in the content filters
+```
+filter.apply();
+```
+#####model - access the filter model, including all of the observables, arrays and methods
+```
+filter.model.slide(); // hide our show the filter content
+```
+
 ###Filter options...
 ```
 var filter = new Trickle({

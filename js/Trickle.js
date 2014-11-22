@@ -258,8 +258,8 @@ var filter = new Trickle({
       
       setProp: function (prop, val) {
         if (_.isObject(prop) && _.isUndefined(val))
-          this.current = prop;
-        else
+          _.assign(this.current, prop);
+        else if (_.isString(prop) && !_.isUndefined(val))
           this.setDescendantProp(this.current, prop, val);
         this.initialized = false;
         this.applyCurrent();
@@ -286,9 +286,12 @@ var filter = new Trickle({
         this.$content.css('overflow', 'visible');
       },
       
-      resetFilters: function() {
+      resetFilters: function(filters) {
         this.initialized = false;
-        this.current = JSON.parse(this.original);
+        if (filters && _.isObject(filters))
+          _.assign(this.current, filters);
+        else
+          this.current = JSON.parse(this.original);
         this.applyCurrent();
       },
       
