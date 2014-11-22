@@ -126,13 +126,14 @@ filter.reset({
     'Area', '21'
 });
 ```
-#####apply - apply the filters as they are represented in the content filters
+#####apply - apply the filters to the model as they are represented in the content filters
 ```
 filter.apply();
 ```
 #####model - access the filter model, including all of the observables, arrays and methods
 ```
-filter.model.slide(); // hide our show the filter content
+filter.model.slide(); // hide or show the filter content
+filter.model.rep_value_RepNumber() // retrieves the rep filter observable's value
 ```
 
 ###Filter options...

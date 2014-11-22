@@ -249,22 +249,6 @@ var filter = new Trickle({
           this.setDescendantProp(obj[a.shift()], a, val);
       },
       
-      getProp: function (prop) {
-        if (prop)
-          return this.getDescendantProp(prop, this.current)[prop];
-        else
-          return _.cloneDeep(this.current);
-      },
-      
-      setProp: function (prop, val) {
-        if (_.isObject(prop) && _.isUndefined(val))
-          _.assign(this.current, prop);
-        else if (_.isString(prop) && !_.isUndefined(val))
-          this.setDescendantProp(this.current, prop, val);
-        this.initialized = false;
-        this.applyCurrent();
-      },
-      
       bind: function () {
         this.model.all = ko.observable(this.all);
         (this.model.slide = this.slide)();
@@ -286,12 +270,27 @@ var filter = new Trickle({
         this.$content.css('overflow', 'visible');
       },
       
+      getProp: function (prop) {
+        if (prop)
+          return this.getDescendantProp(prop, this.current)[prop];
+        else
+          return _.cloneDeep(this.current);
+      },
+      
+      setProp: function (prop, val) {
+        if (_.isObject(prop) && _.isUndefined(val))
+          _.assign(this.current, prop);
+        else if (_.isString(prop) && !_.isUndefined(val))
+          this.setDescendantProp(this.current, prop, val);
+        this.initialized = false;
+        this.applyCurrent();
+      },
+      
       resetFilters: function(filters) {
         this.initialized = false;
+        this.current = JSON.parse(this.original);
         if (filters && _.isObject(filters))
           _.assign(this.current, filters);
-        else
-          this.current = JSON.parse(this.original);
         this.applyCurrent();
       },
       
