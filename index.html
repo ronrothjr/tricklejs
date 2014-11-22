@@ -154,6 +154,58 @@ events upon acceptance.</p>
 </code></pre>
 
 <h3>
+<a id="trickle-methods" class="anchor" href="#trickle-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Trickle methods...</h3>
+
+<h5>
+<a id="get---get-the-value-of-a-filter-property-or-the-current-filters-object" class="anchor" href="#get---get-the-value-of-a-filter-property-or-the-current-filters-object" aria-hidden="true"><span class="octicon octicon-link"></span></a>get - get the value of a filter property or the current filters object</h5>
+
+<pre><code>filter.get('RepNumber');
+</code></pre>
+
+<pre><code>var currentFilters = filter.get();
+</code></pre>
+
+<h5>
+<a id="set---set-the-value-of-a-filter-or-multiple-values-of-a-filter" class="anchor" href="#set---set-the-value-of-a-filter-or-multiple-values-of-a-filter" aria-hidden="true"><span class="octicon octicon-link"></span></a>set - set the value of a filter or multiple values of a filter</h5>
+
+<pre><code>filter.set('RepNumber', 'Brad');
+</code></pre>
+
+<pre><code>filter.set({
+    'RepNumber', 'Brad',
+    'Area', '21'
+});
+</code></pre>
+
+<h5>
+<a id="reset---set-the-current-filters-object-to-the-original-state-and-optionally-set-the-value-of-one-or-more-filters" class="anchor" href="#reset---set-the-current-filters-object-to-the-original-state-and-optionally-set-the-value-of-one-or-more-filters" aria-hidden="true"><span class="octicon octicon-link"></span></a>reset - set the current filters object to the original state And optionally set the value of one or more filters</h5>
+
+<pre><code>filter.reset();
+</code></pre>
+
+<pre><code>filter.reset('RepNumber', 'Brad');
+</code></pre>
+
+<pre><code>filter.reset({
+    'RepNumber', 'Brad',
+    'Area', '21'
+});
+</code></pre>
+
+<h5>
+<a id="apply---apply-the-filters-to-the-model-as-they-are-represented-in-the-content-filters" class="anchor" href="#apply---apply-the-filters-to-the-model-as-they-are-represented-in-the-content-filters" aria-hidden="true"><span class="octicon octicon-link"></span></a>apply - apply the filters to the model as they are represented in the content filters</h5>
+
+<pre><code>filter.apply();
+</code></pre>
+
+<h5>
+<a id="model---access-the-filter-model-including-all-of-the-observables-arrays-and-methods" class="anchor" href="#model---access-the-filter-model-including-all-of-the-observables-arrays-and-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>model - access the filter model, including all of the observables, arrays and methods</h5>
+
+<pre><code>filter.model.slide(); // hide or show the filter content
+filter.model.rep_value_RepNumber() // retrieves the rep filter observable's value
+</code></pre>
+
+<h3>
 <a id="filter-options" class="anchor" href="#filter-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Filter options...</h3>
 
 <pre><code>var filter = new Trickle({
@@ -364,7 +416,7 @@ events upon acceptance.</p>
 <a id="todos" class="anchor" href="#todos" aria-hidden="true"><span class="octicon octicon-link"></span></a>Todo's</h3>
 
 <ul>
-<li>Documentation</li>
+<li><del>Documentation</del></li>
 <li>Write Tests</li>
 <li>Allow standard and custom validators</li>
 <li>Convert binding methods to work in AngularJs</li>
