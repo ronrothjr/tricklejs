@@ -130,6 +130,10 @@ filter.reset({
 ```
 filter.apply();
 ```
+#####default - set the current filter to the default values specified for each
+```
+filter.default();
+```
 #####model - access the filter model, including all of the observables, arrays and methods
 ```
 filter.model.slide(); // hide or show the filter content
@@ -168,6 +172,11 @@ var filter = new Trickle({
 #####error - message to display when validation fails
 ```
       error: 'Please select one',     //optional
+```
+#####default - specifies the default value for the current filter property
+NOTE: only used if the 'current' option is not supplied and all filters have this property
+```
+      default: { 'RepNumber': 'Brad' }, //optional
 ```
 #####selectOptions - contains options for select lists
 ```
@@ -312,6 +321,7 @@ Want to contribute? Great!
 ### Todo's
 
  - ~~Documentation~~
+ - Add paging and sorting options
  - Write Tests
  - Allow standard and custom validators
  - Convert binding methods to work in AngularJs

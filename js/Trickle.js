@@ -53,7 +53,6 @@ var filter = new Trickle({
         if (!this.validateOptions(options))
           return false;
         _.assign(this, options);
-        this.current = this.current || {};
         _.bindAll(this);
         return true;
       },
@@ -67,6 +66,7 @@ var filter = new Trickle({
           set: this.setProp,
           reset: this.resetFilters,
           apply: this.applyFilters,
+          default: this.setDefaults,
           model: this.model
         };
       },
@@ -93,6 +93,37 @@ var filter = new Trickle({
           console.log('Trickle: no filters');
           return false;
         }
+        if(!options.current)
+          return this.setDefaults(options);
+        return true;
+      },
+      
+      setDefaults: function (options) {
+        options = options || this.options;
+        var tempCurrent = {},
+            defaults = true;
+        _.each(options.filters, function(filter, key) {
+          defaults = defaults ? 
+            !_.isUndefined(filter.default) :
+            defaults;
+          if (defaults) {
+            var property = _.isArray(filter.property) ?
+              filter.property :
+              new Array(filter.property);
+            _.each(property, 
+              function(prop){
+                this.setDescendantProp(tempCurrent, prop, filter.default[prop]);
+              }, this);
+          } 
+        }, this);
+        if(!defaults) {
+          console.log('Trickle: missing default values');
+          return false;
+        }
+        if (options)
+          options.current = tempCurrent;
+        else
+          this.current = tempCurrent;
         return true;
       },
       
@@ -245,8 +276,12 @@ var filter = new Trickle({
         var a = _.isArray(prop) ? prop : prop.split(".");
         if (a.length === 1)
           obj[a[0]] = val;
-        else if (a.length > 1)
-          this.setDescendantProp(obj[a.shift()], a, val);
+        else if (a.length > 1) {
+          var p = a.shift();
+          if (!obj[p])
+            obj[p] = {};
+          this.setDescendantProp(obj[p], a, val);
+        }
       },
       
       bind: function () {

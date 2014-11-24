@@ -12,7 +12,7 @@ w.test4 = new Trickle({
   
   persistTrigger: 'FilterPersisted',
   
-  current: w.currentFilter,
+  //current: w.currentFilter,
   
   model: {
     displayRepAreaFilters: w.includeRepAreaFilters,
@@ -45,7 +45,8 @@ w.test4 = new Trickle({
       cascade: {
         child: 'area', 
         options: w.allRepAreas
-      }
+      },
+      default: { 'RepNumber': 'Brad' }
     },
     'area': {
       display: 'displayRepAreaFilters',
@@ -61,7 +62,8 @@ w.test4 = new Trickle({
           optionsValue: 'id',
           optionsText: 'text'
         }
-      }
+      },
+      default: { 'AreaId': 33 }
     },
     'client': {
       display: 'displayCustFilters',
@@ -79,7 +81,8 @@ w.test4 = new Trickle({
           optionsText: 'text',
           selectedOptions: w.selectedClients
         }
-      }
+      },
+      default: { 'CustFilters.ClientId': [] }
     },
     'accttype': {
       display: 'displayAcctTypeFilters',
@@ -97,7 +100,8 @@ w.test4 = new Trickle({
           optionsText: 'text',
           selectedOptions: w.selectedAcctTypes
         }
-      }
+      },
+      default: { 'CustFilters.AcctTypeId': [] }
     },
     'quantityamount': {
       display: 'displayQuantityOrAmountFilters',
@@ -106,7 +110,8 @@ w.test4 = new Trickle({
       label: 'Qty/Amt',
       options: ['Qty','Amt'],
       showContentLabel: false,
-      onPersistLocalOnly: 'QuantityToggled'
+      onPersistLocalOnly: 'QuantityToggled',
+      default: { 'QuantityToggle': 'Amt' }
     },
     'labormaterials': {
       display: 'displayLaborAndMaterialFilters',
@@ -121,19 +126,25 @@ w.test4 = new Trickle({
         'IncludeMaterials': 'Materials'
       },
       showContentLabel: false,
-      error: 'Please select one'
+      error: 'Please select one',
+      default: {
+        'IncludeLabor': true,
+        'IncludeMaterials': true
+      }
     },
     'daterange': {
       type: 'daterange',
       property: 'CustFilters.DateRange',
       label: 'Delivery Date',
-      error: 'Invalid Date Range'
+      error: 'Invalid Date Range',
+      default: { 'CustFilters': {Begin: null, End: null} }
     },
     'location': {
       display: 'displayLocationFilters',
       type: 'listbuilder',
       property: 'LocationFilters',
       label: 'Location',
+      default: { 'LocationFilters': [] },
       parameters: {
         'state': {
           label: 'State',
