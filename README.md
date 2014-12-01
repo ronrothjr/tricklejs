@@ -70,7 +70,7 @@ var filter = new Trickle({
 
 ###Listen for the persistTrigger...
 ```
-$(d).on('FilterPersisted',function(e, data){
+$(document).on('FilterPersisted',function(e, data){
   $('#vwContent').append('<br><br>FilterPersisted: '+
   JSON.stringify(data));
   console.log('FilterPersisted: ',data);
