@@ -129,7 +129,7 @@ filter.set({
     'AreaId', '21'
 });
 ```
-#####changed - returns true if the filter has changed and has not yet been persisted
+#####changed - returns true if the filter has changed since the last time it was persisted
 ```
 filter.changed('rep');
 ```
