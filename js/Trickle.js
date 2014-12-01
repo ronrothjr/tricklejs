@@ -395,7 +395,7 @@ var filter = new Trickle({
       
       isChanged: function (key) {
         return this.changed[key];
-      }
+      },
       
       getFilterValue: function(key, property) {
         var filter = this.filters[key];
