@@ -102,15 +102,15 @@ events upon acceptance.</p>
 
 <pre><code>var filter = new Trickle({
   filters: {
-    'order': {
-      property: 'OrderNumber',
-      label: 'Order Number',
+    'rep': {
+      property: 'RepNumber',
+      label: 'Rep Number',
       type: 'select',
       selectOptions: {
         allowAll: true,
         sortOptions: true,
         bindings: {
-          options: window.availableItems,
+          options: window.availableReps,
           chosen: { width: '300px' },
           optionsValue: 'id',
           optionsText: 'text',
@@ -125,7 +125,7 @@ events upon acceptance.</p>
 <h3>
 <a id="listen-for-the-persisttrigger" class="anchor" href="#listen-for-the-persisttrigger" aria-hidden="true"><span class="octicon octicon-link"></span></a>Listen for the persistTrigger...</h3>
 
-<pre><code>$(d).on('FilterPersisted',function(e, data){
+<pre><code>$(document).on('FilterPersisted',function(e, data){
   $('#vwContent').append('&lt;br&gt;&lt;br&gt;FilterPersisted: '+
   JSON.stringify(data));
   console.log('FilterPersisted: ',data);
