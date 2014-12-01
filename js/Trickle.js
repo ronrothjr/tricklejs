@@ -120,7 +120,7 @@ var filter = new Trickle({
             this.default = {};
             _.each(property, 
               function(prop){
-                if (_.isObject(this.filter.default))
+                if (_.isObject(this.filter.default) && !_.isArray(this.filter.default))
                   this.default = this.filter.default;
                 else
                   this.default[prop] = this.filter.default;
@@ -369,6 +369,7 @@ var filter = new Trickle({
       
       resetFilters: function(filters) {
         this.initialized = false;
+        console.log(this.original);
         this.current = JSON.parse(this.original);
         if (filters && _.isObject(filters))
           _.assign(this.current, filters);
