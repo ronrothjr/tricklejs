@@ -362,6 +362,7 @@ var filter = new Trickle({
         this.unbind();
         if (this.filters[name])
           delete this.filters[name];
+        _.each(this.filters, this.applyFilter);
         this.initialized = false;
         this.setFilters();
       },
