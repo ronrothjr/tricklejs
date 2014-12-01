@@ -138,13 +138,12 @@ w.test4 = new Trickle({
       label: 'Delivery Date',
       error: 'Invalid Date Range',
       default: {Begin: null, End: null}
-    }/*,
+    },
     'location': {
       display: 'displayLocationFilters',
       type: 'listbuilder',
       property: 'LocationFilters',
       label: 'Location',
-      default: { 'LocationFilters': [] },
       parameters: {
         'state': {
           label: 'State',
@@ -158,8 +157,9 @@ w.test4 = new Trickle({
           label: 'County',
           options: w.availableCounties
         }
-      }
-    }*/
+      },
+      default: []
+    }
   }
 });  
 
@@ -172,14 +172,13 @@ $(d).on('QuantityToggled',function(e, data){
   $('#vwContent').append('<br><br>QuantityToggled');
   console.log('QuantityToggled');
 });
-
+/*
 _.delay(function(){
   test4.add('location', {
     display: 'displayLocationFilters',
     type: 'listbuilder',
     property: 'LocationFilters',
     label: 'Location',
-    default: { 'LocationFilters': [] },
     parameters: {
       'state': {
         label: 'State',
@@ -193,13 +192,14 @@ _.delay(function(){
         label: 'County',
         options: w.availableCounties
       }
-    }
+    },
+    default: []
   });
 },5000);
 
 _.delay(function(){
   test4.remove('accttype');
 },10000);
-
+*/
 })(document,window)
 

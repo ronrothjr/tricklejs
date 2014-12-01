@@ -369,7 +369,6 @@ var filter = new Trickle({
       
       resetFilters: function(filters) {
         this.initialized = false;
-        console.log(this.original);
         this.current = JSON.parse(this.original);
         if (filters && _.isObject(filters))
           _.assign(this.current, filters);
