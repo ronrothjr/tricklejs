@@ -37,33 +37,38 @@ var filter = new Trickle({
 */
 
 (function(d, w, $, _) {
+  
+  var trickle_options = {
+    id: null,
+    current: null,
+    title: null,
+    model: {},
+    changed: {},
+    persistTrigger: 'FiltersPersisted',
+    all: '--All--',
+    hidden: true,
+    initialized: false
+  };
+  
   var Trickle = function(options) {
     var trickle = {
-      id: null,
-      current: null,
-      title: null,
-      model: {},
-      changed: {},
-      persistTrigger: 'FiltersPersisted',
-      all: '--All--',
-      hidden: true,
-      initialized: false,
       
       init: function(options) {
         if (!this.validateOptions(options))
           return false;
-        _.assign(this, options);
+        _.assign(this, trickle_options, options);
         _.bindAll(this);
         return true;
       },
       
       emit: function() {
-        this.write();
-        this.bind();
-        this.original = JSON.stringify(this.current);
+        _.each(this.filters, _.bind(this.normalizeFilter, this));
+        this.setFilters();
         return {
           get: this.getProp,
           set: this.setProp,
+          add: this.addFilter,
+          remove: this.removeFilter,
           reset: this.resetFilters,
           apply: this.applyFilters,
           default: this.setDefaults,
@@ -100,31 +105,44 @@ var filter = new Trickle({
       
       setDefaults: function (options) {
         options = options || this.options;
-        var tempCurrent = {},
-            defaults = true;
+        this.tempCurrent = {};
+        this.defaults = true;
         _.each(options.filters, function(filter, key) {
-          defaults = defaults ? 
+          this.key = key;
+          this.filter = filter;
+          this.defaults = this.defaults ? 
             !_.isUndefined(filter.default) :
-            defaults;
-          if (defaults) {
+            this.defaults;
+          if (this.defaults) {
             var property = _.isArray(filter.property) ?
               filter.property :
               new Array(filter.property);
+            this.default = {};
             _.each(property, 
               function(prop){
-                this.setDescendantProp(tempCurrent, prop, filter.default[prop]);
+                if (_.isObject(this.filter.default))
+                  this.default = this.filter.default;
+                else
+                  this.default[prop] = this.filter.default;
+                this.setDescendantProp(this.tempCurrent, prop, this.default[prop]);
               }, this);
           } 
         }, this);
-        if(!defaults) {
+        if(!this.defaults) {
           console.log('Trickle: missing default values');
           return false;
         }
         if (options)
-          options.current = tempCurrent;
+          options.current = this.tempCurrent;
         else
-          this.current = tempCurrent;
+          this.current = this.tempCurrent;
         return true;
+      },
+      
+      setFilters: function () {
+        this.write();
+        this.bind();
+        this.original = JSON.stringify(this.current);
       },
       
       write: function () {
@@ -132,7 +150,6 @@ var filter = new Trickle({
         this.$button = this.$view.find('.filter_button');
         this.$labels = this.$view.find('.filter_labels');
         this.$content = this.$view.find('.filter_content');
-        _.each(this.filters, _.bind(this.normalizeFilter, this));
         _.each(this.filters, _.bind(this.writeFilter, this));
         this.$content.append(this.html('apply'));
         this.$view.show();
@@ -294,6 +311,11 @@ var filter = new Trickle({
         this.applyCurrent();
       },
       
+      unbind: function () {
+        ko.cleanNode(this.$view[0]);
+        this.$view.html('');
+      },
+      
       slide: function () {
         if (this.hidden && this.$button && this.$content) {
           this.$content.slideToggle('fast');
@@ -319,6 +341,29 @@ var filter = new Trickle({
           this.setDescendantProp(this.current, prop, val);
         this.initialized = false;
         this.applyCurrent();
+      },
+      
+      addFilter: function(name, filter) {
+        if (!name || !filter)
+          return false;
+        if (!filter.type || !filter.default || !filter.property) {
+          console.log('Trickle: missing filter attributes')
+          return false;
+        }
+        _.each(this.filters, this.applyFilter);
+        this.normalizeFilter(filter, name);
+        this.filters[name] = filter;
+        this.unbind();
+        this.initialized = false;
+        this.setFilters();
+      },
+      
+      removeFilter: function(name) {
+        this.unbind();
+        if (this.filters[name])
+          delete this.filters[name];
+        this.initialized = false;
+        this.setFilters();
       },
       
       resetFilters: function(filters) {
@@ -641,7 +686,7 @@ var filter = new Trickle({
             id = key+'_value_'+filter.property[0].replace(/\./g,'_'),
             parameters = filter.parameters,
             all = 'Any',
-            val = this.getDescendantProp(filter.property, this.current);
+            val = self.getDescendantProp(filter.property, self.current);
         self.model[id] = koList = ko.observableArray(val[filter.property]);
         self.model[key+'_invalid'] = ko.observable(false);
         self.model[key+'_enable_add_button'] = koEnabled = ko.observable(false);
@@ -676,7 +721,7 @@ var filter = new Trickle({
             removeItem = function (data){
                 koList.remove(data);
               };
-        this.model[id].subscribe(enable);
+        self.model[id].subscribe(enable);
         self.model[key+'_addItem'] = addItem;
         self.model[key+'_removeItem'] = removeItem;
         self.model[key+'_formatItem'] = getFormat;

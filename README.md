@@ -96,11 +96,27 @@ new Trickle({
 
 ###Trickle methods...
 
+#####add - add a filter and display it with the current filters
+```
+filter.add('quantityamount': {
+      type: 'radio',
+      property: 'QuantityToggle',
+      label: 'Qty/Amt',
+      options: ['Qty','Amt'],
+      showContentLabel: false,
+      default: 'Amt'
+    });
+```
+#####remove - remove a filter and display the current filters
+```
+filter.remove('quantityamount');
+```
 #####get - get the value of a filter property or the current filters object
 ```
 filter.get('RepNumber');
 ```
 ```
+// retrieves the current filters with updated values
 var currentFilters = filter.get();
 ```
 #####set - set the value of a filter or multiple values of a filter
@@ -176,7 +192,7 @@ var filter = new Trickle({
 #####default - specifies the default value for the current filter property
 NOTE: only used if the 'current' option is not supplied and all filters have this property
 ```
-      default: { 'RepNumber': 'Brad' }, //optional
+      default: 'Brad',                //optional
 ```
 #####selectOptions - contains options for select lists
 ```

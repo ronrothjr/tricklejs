@@ -46,7 +46,7 @@ w.test4 = new Trickle({
         child: 'area', 
         options: w.allRepAreas
       },
-      default: { 'RepNumber': 'Brad' }
+      default: 'Brad'
     },
     'area': {
       display: 'displayRepAreaFilters',
@@ -63,7 +63,7 @@ w.test4 = new Trickle({
           optionsText: 'text'
         }
       },
-      default: { 'AreaId': 33 }
+      default: '33'
     },
     'client': {
       display: 'displayCustFilters',
@@ -82,7 +82,7 @@ w.test4 = new Trickle({
           selectedOptions: w.selectedClients
         }
       },
-      default: { 'CustFilters.ClientId': [] }
+      default: []
     },
     'accttype': {
       display: 'displayAcctTypeFilters',
@@ -101,7 +101,7 @@ w.test4 = new Trickle({
           selectedOptions: w.selectedAcctTypes
         }
       },
-      default: { 'CustFilters.AcctTypeId': [] }
+      default: []
     },
     'quantityamount': {
       display: 'displayQuantityOrAmountFilters',
@@ -111,7 +111,7 @@ w.test4 = new Trickle({
       options: ['Qty','Amt'],
       showContentLabel: false,
       onPersistLocalOnly: 'QuantityToggled',
-      default: { 'QuantityToggle': 'Amt' }
+      default: 'Amt'
     },
     'labormaterials': {
       display: 'displayLaborAndMaterialFilters',
@@ -137,8 +137,8 @@ w.test4 = new Trickle({
       property: 'CustFilters.DateRange',
       label: 'Delivery Date',
       error: 'Invalid Date Range',
-      default: { 'CustFilters': {Begin: null, End: null} }
-    },
+      default: {Begin: null, End: null}
+    }/*,
     'location': {
       display: 'displayLocationFilters',
       type: 'listbuilder',
@@ -159,7 +159,7 @@ w.test4 = new Trickle({
           options: w.availableCounties
         }
       }
-    }
+    }*/
   }
 });  
 
@@ -167,10 +167,39 @@ $(d).on('FilterPersisted',function(e, data){
   $('#vwContent').append('<br><br>FilterPersisted: '+
   JSON.stringify(data));
   console.log('FilterPersisted: ',data);
-})
+});
 $(d).on('QuantityToggled',function(e, data){
   $('#vwContent').append('<br><br>QuantityToggled');
   console.log('QuantityToggled');
-})
+});
+
+_.delay(function(){
+  test4.add('location', {
+    display: 'displayLocationFilters',
+    type: 'listbuilder',
+    property: 'LocationFilters',
+    label: 'Location',
+    default: { 'LocationFilters': [] },
+    parameters: {
+      'state': {
+        label: 'State',
+        options: w.availableStates,
+        cascade: {
+          child: 'county', 
+          options: w.availableLocationOptions
+        }
+      },
+      'county': {
+        label: 'County',
+        options: w.availableCounties
+      }
+    }
+  });
+},5000);
+
+_.delay(function(){
+  test4.remove('accttype');
+},10000);
+
 })(document,window)
 
