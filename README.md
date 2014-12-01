@@ -119,15 +119,19 @@ filter.get('RepNumber');
 // retrieves the current filters with updated values
 var currentFilters = filter.get();
 ```
-#####set - set the value of a filter or multiple values of a filter
+#####set - set the value of a filter property or multiple filter property values
 ```
 filter.set('RepNumber', 'Brad');
 ```
 ```
 filter.set({
     'RepNumber', 'Brad',
-    'Area', '21'
+    'AreaId', '21'
 });
+```
+#####changed - returns true if the filter has changed and has not yet been persisted
+```
+filter.changed('rep');
 ```
 #####reset - set the current filters object to the original state And optionally set the value of one or more filters
 ```

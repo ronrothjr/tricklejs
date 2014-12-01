@@ -67,6 +67,7 @@ var filter = new Trickle({
         return {
           get: this.getProp,
           set: this.setProp,
+          changed: this.isChanged,
           add: this.addFilter,
           remove: this.removeFilter,
           reset: this.resetFilters,
@@ -391,6 +392,10 @@ var filter = new Trickle({
           this.applyFilterValue);
         
       },
+      
+      isChanged: function (key) {
+        return this.changed[key];
+      }
       
       getFilterValue: function(key, property) {
         var filter = this.filters[key];
