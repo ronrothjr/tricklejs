@@ -15,14 +15,14 @@ configuring options to create feature-rich filters:
 
 ##[DEMO]
 
-#### Supported widgets:
+#### Supported UI Elements:
 
 - Select
 - Select (multiple)
 - Checkbox buttons
 - Radio buttons
 - Date Range
-- List
+- List Builder
 
 ### Version
 0.0.1
@@ -307,7 +307,7 @@ NOTE: only used if the 'current' option is not supplied and all filters have thi
       error: 'Invalid Date Range'
     }
 ```
-#####List
+#####List Builder
 ```
     'location': {
       type: 'listbuilder',
