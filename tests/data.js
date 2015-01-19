@@ -5,7 +5,7 @@
             return;
 
         //Have to have this bit of script here in the view so that Razor can populate the server side values we're referencing
-        w.currentFilter = {"MasterContractId":1,"RepNumber":"Brad","AreaId":33,"IncludeLabor":true,"IncludeMaterials":true,"QuantityToggle":"Qty","AreaName":"","LocationFilters":[{state:'FL',county:''}],"subsidiaryId":1,"AllWOfilterSelected":true,"CustFilters":{"RepNumber":"Brad","AreaId":33,"ClientId":[],"AcctTypeId":[],"DateRange":{"Begin":null,"End":null}}};
+        w.currentFilter = {"MasterContractId":1,"RepNumber":"Brad","AreaId":"33","IncludeLabor":true,"IncludeMaterials":true,"QuantityToggle":"Qty","AreaName":"","LocationFilters":[{state:'FL',county:''}],"subsidiaryId":1,"AllWOfilterSelected":true,"CustFilters":{"RepNumber":"Brad","AreaId":33,"ClientId":[],"AcctTypeId":[],"DateRange":{"Begin":null,"End":null}}};
         w.includeRepAreaFilters = 'True'.toLowerCase() === 'true';
         w.includeAreaFilters = 'True'.toLowerCase() === 'true';
         w.includeLocationFilters = 'True'.toLocaleLowerCase() === 'true';
@@ -16,7 +16,7 @@
         w.includeDateRangeFilters = 'True'.toLowerCase() === 'true';
         w.includeAllRepsFilter = 'False'.toLowerCase() === 'true';
         w.allRepAreas = {"Brad":{"21":"Pacific Northwest","22":"Pacific Northeast","33":"Pacific Central"},"Joe":{"20":"Pacific Southwest","30":"North Central"},"Alan":{"23":"South Central","26":"Central US"},"Steve":{"31":"Atlantic Northeast 1","32":"Atlantic Central"},"Pat":{"1":"Atlantic Northeast 2","11":"Atlantic Southeast"}};
-        w.availableReps = ["--All--","Brad","Joe","Alan","Steve","Pat"];
+        w.availableReps = ["Brad","Joe","Alan","Steve","Pat"];
         w.allWOfilterSelected = 'True'.toLowerCase() !== 'false';
         w.availableAreas = [{id:"21",text:"Pacific Northwest"},{id:"22",text:"Pacific Northeast"},{id:"33",text:"Pacific Central"},{id:"20",text:"Pacific Southwest"},{id:"30",text:"North Central"},{id:"23",text:"South Central"},{id:"26",text:"Central US"},{id:"31",text:"Atlantic Northeast 1"},{id:"32",text:"Atlantic Central"},{id:"1",text:"Atlantic Northeast 2"},{id:"11",text:"Atlantic Southeast"}];
         w.availableLocationFilters = [{"label":"AL","value":[{"label":"Lee County","value":[]}]},{"label":"MO","value":[{"label":"Platte County","value":[]},{"label":"Clay County","value":[]},{"label":"Jackson County","value":[]}]},{"label":"NJ","value":[{"label":"Cape May County","value":[]}]},{"label":"KS","value":[{"label":"Wyandotte County","value":[]},{"label":"Johnson County","value":[]}]},{"label":"DE","value":[{"label":"New Castle County","value":[]}]},{"label":"FL","value":[{"label":"Charlotte County","value":[]}]}];

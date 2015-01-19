@@ -12,6 +12,8 @@
   #vwFilters input:valid {
     border: 1px solid #b0b0b0;
     border-radius: 4px; }
+  #vwFilters .chosen-choices {
+    border-radius: 4px; }
   #vwFilters .filter .btn-primary:active, #vwFilters .filter .btn-primary.active, #vwFilters .labormaterials_filters .open .dropdown-toggle.btn-primary {
       color: #ffffff;
       background-color: #3276b1;

@@ -1,40 +1,39 @@
-  .filter {
+  .trickle_filter {
     float: left;
     margin-right: 10px; }
-  .filter > label {
+  .trickle_filter > label {
     margin-bottom: -4px;}
-  .filter .form-group {
+  .trickle_filter .form-group {
     margin-bottom: 0px;}
-  .filter .btn-primary {
+  .trickle_filter .btn-primary {
     color: #222222;
     background-color: #dddddd;
     border-color: #285e8e; }
-  .filter .btn-primary:hover {
+  .trickle_filter .btn-primary:hover {
     color: #222222;
     background-color: #aaaaaa;
     border-color: #285e8e; }
-  .filter > .btn-primary:focus {
+  .trickle_filter > .btn-primary:focus {
       color: #ffffff;
       background-color: #3276b1;
       border-color: #222222; }
-  .filter .btn-primary {
+  .trickle_filter .btn-primary {
     color: #222222;
     background-color: #dddddd;
     border-color: #285e8e; }
-  .filter .btn-primary:hover {
+  .trickle_filter .btn-primary:hover {
     color: #222222;
     background-color: #aaaaaa;
     border-color: #285e8e; }
   button {
     margin-top: 10px;
     margin-right: 25px; 
-    float: left;
-  }
-  .filter_button {
+    float: left; }
+  .trickle_filter_button {
     margin-top: 20px !important; }
-  .filter_labels {
+  .trickle_filter_labels {
     margin-top: 20px; }
-  .filter_content {
+  .trickle_filter_content {
     z-index: 5000;
     position: absolute;
     left: 5px;
@@ -47,39 +46,42 @@
     margin-right: 5px;
     padding: 10px;
     border-radius: 0px 10px 0px 10px; }
-  .filter .field-validation-error {
-    color: red;
-  }
-  .filter input[type=date] {
-    height: 22px;
-    width: 150px; }
-  .daterange_filter {
+  .trickle_filter .field-validation-error {
+    color: red; }
+  input[type="date"].trickle_filter {
+    height: 22px !important;
+    width: 150px !important;
+    margin-right: 0px !important;
+    border: 1px solid #b0b0b0;
+    border-radius: 4px; }
+  .trickle_daterange_filter {
     width: 320px; }
-  .daterange-label {
+  .trickle_daterange-label {
+    font-weight: normal;
+    font-style: italic;
     margin-top: -4px !important;
     margin-bottom: -4px !important;}
-  .filter-label {
+  .trickle_filter-label {
     margin-top: 10px;
     margin-right: 20px; }
-  .filter-label label {
+  .trickle_filter-label label {
       color: #5cb85c; }
-  .chosen-choices {
+  .trickle_chosen-choices {
     border-radius: 4px; }
-  .filter_parameters > div {
+  .trickle_filter_parameters > div {
     margin-right: 10px !important;}
-  .filter_parameter > label {
+  .trickle_filter_parameter > label {
     margin-top: -4px !important;
     margin-bottom: -4px !important;}
-  .filter_list_button {
+  .trickle_filter_list_button {
     margin-top: 5px; }
-  .filter_list {
+  .trickle_filter_list {
     position: relative;
-    display: inline-block; 
-  }
-  .filter_list > div {
+    display: inline-block; }
+  .trickle_filter_list > div {
     vertical-align: top;
     margin-top: 10px;}
-  .filter_list_items > div {
+  .trickle_filter_list_items > div {
     float: left;
     margin-right: 5px !important;
     margin-top: 0px !important;
